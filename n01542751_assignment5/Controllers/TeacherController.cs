@@ -80,5 +80,44 @@ namespace n01542751_assignment5.Controllers
             //redirect to the new list
             return RedirectToAction("List");
         }
+
+        //GET: /Teacher/Update/{id}
+        /// <summary>
+        /// returns a webpage to the teacher 
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public ActionResult Update(int id)
+        {
+            TeacherDataController controller = new TeacherDataController();
+            TeacherCourse SelectedTeacher = controller.FindTeacher(id);
+
+            return View(SelectedTeacher);
+        }
+
+        //POST: /Teacher/Edit/{id}
+        /// <summary>
+        /// this method updates the teacher information
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="teacherfname"></param>
+        /// <param name="teacherlname"></param>
+        /// <returns></returns>
+        [HttpPost]
+
+        public ActionResult Edit(int id, string teacherfname, string teacherlname)
+        {
+            Teacher TeacherInfo = new Teacher();
+            TeacherInfo.TeacherFName = teacherfname;
+            TeacherInfo.TeacherLName = teacherlname;
+            TeacherInfo.TeacherId = id;
+
+            //update the teacher
+            TeacherDataController controller = new TeacherDataController();
+            controller.UpdateTeacher(id, TeacherInfo);
+
+            //return to the teacher
+            return RedirectToAction("/Show/" + id);
+        }
     }
 }

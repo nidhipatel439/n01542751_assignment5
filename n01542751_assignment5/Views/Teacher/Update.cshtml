@@ -1,0 +1,21 @@
+﻿@model n01542751_assignment5.Models.TeacherCourse
+
+@{
+    ViewBag.Title = "Update";
+}
+
+<h2>Update Teacher</h2>
+
+<form method="Post" action="/Teacher/Edit/@Model.Teacher.TeacherId">
+    <div>
+        <label>First Name:</label>
+        <input type="text" name="teacherfname" value="@Model.Teacher.TeacherFName"/>
+    </div>
+    <div>
+        <lable>Last Name:</lable>
+        <input type="text" name="teacherlname" value="@Model.Teacher.TeacherLName"/>
+    </div>
+    <div>
+        <input type="submit" value="Update Teacher" />
+    </div>
+</form>
