@@ -1,0 +1,30 @@
+﻿@model n01542751_assignment5.Models.TeacherCourse
+@{
+    ViewBag.Title = "Show";
+}
+
+
+<h2>Teacher Information</h2>
+<a href="/Teacher/DeleteConfirm/@Model.Teacher.TeacherId">Delete this teacher</a>
+<div>
+    Teacher Id: @Model.Teacher.TeacherId
+</div>
+<div>
+    First Name: @Model.Teacher.TeacherFName
+</div>
+<div>
+    Last Name: @Model.Teacher.TeacherLName
+</div>
+<h3>@Model.Teacher.TeacherFName teaches @Model.Courses.Count() course(s).</h3>
+<div>
+    @{
+        foreach (n01542751_assignment5.Models.Course Course in Model.Courses)
+        {
+
+            <div>
+                Class Name: @Course.ClassName
+            </div>
+            <br />
+        }
+    }
+</div>
